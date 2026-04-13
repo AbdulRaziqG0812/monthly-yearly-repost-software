@@ -4015,4 +4015,4 @@ def edit_summarisereport_list(id):
     return render_template('edit_summarisereport_list.html', record=record)
 
 if __name__ == '__main__':
-    app.run(host="172.16.48.56", port=5500, debug=True)
+    app.run(port=5600, debug=True)
