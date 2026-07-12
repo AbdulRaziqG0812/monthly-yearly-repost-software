@@ -4,6 +4,7 @@ import mysql.connector
 from flask_cors import CORS
 import calendar
 import csv
+import os
 
 app = Flask(__name__)
 CORS(app)
@@ -11,10 +12,10 @@ app.secret_key = '123789456'
 
 # Database config
 db_config = {
-    'host': 'localhost',
-    'user': 'root',
-    'password': 'raziq12@',
-    'database': 'nha_db'
+    "host": os.getenv("DB_HOST"),
+    "user": os.getenv("DB_USER"),
+    "password": os.getenv("DB_PASSWORD"),
+    "database": os.getenv("DB_NAME")
 }
 
 def get_db_connection():
@@ -4014,5 +4015,5 @@ def edit_summarisereport_list(id):
         conn.close()
     return render_template('edit_summarisereport_list.html', record=record)
 
-if __name__ == '__main__':
-    app.run(port=5600, debug=True)
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000)
